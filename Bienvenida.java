@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package propiedadhorizontal;
+package presentacion;
 
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logica.Conjunto;
+import logica.Inmobiliaria;
+import util.CaException;
 
 
 /**
@@ -14,11 +18,24 @@ import javax.swing.JOptionPane;
  */
 public class Bienvenida extends javax.swing.JFrame {
 
+    Inmobiliaria inmobiliaria = new Inmobiliaria();
+    
     /**
      * Creates new form Bienvenida
      */
     public Bienvenida() {
         initComponents();
+        actualizarConjuntos();
+    }
+    
+    public void actualizarConjuntos(){
+        try {
+            listaConjuntos.removeAllItems();
+            for(int i=0; i<inmobiliaria.listaConjuntos().getItemCount(); i++)
+            listaConjuntos.addItem(inmobiliaria.listaConjuntos().getItemAt(i));
+        } catch (CaException ex) {
+            Logger.getLogger(Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -30,19 +47,43 @@ public class Bienvenida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        welcome = new javax.swing.JLabel();
+        ingresar = new javax.swing.JButton();
+        crearConjunto = new javax.swing.JButton();
+        listaConjuntos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
-        jLabel1.setText("Administradora de propiedad horizontal UD y Asociados");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 43, 1225, 102));
+        welcome.setFont(new java.awt.Font("Snap ITC", 0, 36)); // NOI18N
+        welcome.setText("Administradora de propiedad horizontal UD y Asociados");
+        getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 770, 102));
+
+        ingresar.setText("Ingresar");
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 30));
+
+        crearConjunto.setText("Crear Nuevo Conjunto");
+        crearConjunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearConjuntoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(crearConjunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, 30));
+
+        getContentPane().add(listaConjuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Lista de Conjuntos por Codigo: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jButton1.setText("Desarrolladores");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,30 +91,41 @@ public class Bienvenida extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 152, 146, 45));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
-        jButton2.setText("Ingresar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 316, -1, -1));
-
-        jButton3.setText("Crear Nuevo Conjunto");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, 30));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButton2.setText("Actualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 152, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void crearConjuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearConjuntoActionPerformed
+        // TODO add your handling code here:
+        JFrameConjunto frameConjunto = new JFrameConjunto("Crear");
+        frameConjunto.setVisible(true);
+    }//GEN-LAST:event_crearConjuntoActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Desarrolladores des = new Desarrolladores();
-        des.setVisible(true);
+        // TODO add your handling code here:
+        new Developers().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
+        try {
+            inmobiliaria.buscarConjunto(new Conjunto((int)listaConjuntos.getSelectedItem()));
+        } catch (CaException ex) {
+            Logger.getLogger(Bienvenida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ingresarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        actualizarConjuntos();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,11 +163,12 @@ public class Bienvenida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton crearConjunto;
+    private javax.swing.JButton ingresar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> listaConjuntos;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }
