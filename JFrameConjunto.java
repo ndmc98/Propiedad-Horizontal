@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package administradorpropiedadhorizontal;
+package presentacion;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logica.Conjunto;
+import logica.Inmobiliaria;
+import util.CaException;
 
 /**
  *
@@ -11,11 +17,17 @@ package administradorpropiedadhorizontal;
  */
 public class JFrameConjunto extends javax.swing.JFrame {
 
+    Conjunto conjunto;
+    Inmobiliaria inmobiliaria = new Inmobiliaria();
+    
     /**
      * Creates new form JFrameConjunto
      */
-    public JFrameConjunto() {
+    public JFrameConjunto(String estado) {
         initComponents();
+        if(estado.equals("Crear")){
+            actualizar.setVisible(false);
+        }
     }
 
     /**
@@ -123,6 +135,11 @@ public class JFrameConjunto extends javax.swing.JFrame {
         getContentPane().add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -137,43 +154,22 @@ public class JFrameConjunto extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
-        // TODO add your handling code here:
+        try {
+            conjunto = new Conjunto((int)idConjunto.getValue(),nombre.getText(),
+                    (int)valorCuotaAdmin.getValue(),(float)tazaDescuento.getValue(),(int)cuentaBanco.getValue(),
+                    (int)diasDescuento.getValue(),(float)tasaMora.getValue());
+            inmobiliaria.incluirConjunto(conjunto);
+            this.setVisible(false);
+            dispose();
+        } catch (CaException ex) {
+            Logger.getLogger(JFrameConjunto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_crearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameConjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameConjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameConjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameConjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrameConjunto().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
