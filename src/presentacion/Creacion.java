@@ -38,7 +38,7 @@ public class Creacion extends javax.swing.JFrame {
         espacioComun = new javax.swing.JButton();
         Bloque = new javax.swing.JButton();
         reserva = new javax.swing.JButton();
-        pagoReserva = new javax.swing.JButton();
+        pagoEspacio = new javax.swing.JButton();
         persona = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cuota = new javax.swing.JButton();
@@ -93,8 +93,13 @@ public class Creacion extends javax.swing.JFrame {
         });
         bloque.add(reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        pagoReserva.setText("Pago Reserva");
-        bloque.add(pagoReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        pagoEspacio.setText("Pago Espacio");
+        pagoEspacio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagoEspacioActionPerformed(evt);
+            }
+        });
+        bloque.add(pagoEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         persona.setText("Persona");
         bloque.add(persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
@@ -152,6 +157,10 @@ public class Creacion extends javax.swing.JFrame {
         new JFrameReserva(conjunto).setVisible(true);
     }//GEN-LAST:event_reservaActionPerformed
 
+    private void pagoEspacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoEspacioActionPerformed
+        new JFramePagoEspacio(conjunto).setVisible(true);
+    }//GEN-LAST:event_pagoEspacioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bloque;
     private javax.swing.JButton apto;
@@ -162,7 +171,7 @@ public class Creacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pagoCuota;
-    private javax.swing.JButton pagoReserva;
+    private javax.swing.JButton pagoEspacio;
     private javax.swing.JButton parqueadero;
     private javax.swing.JButton persona;
     private javax.swing.JButton reserva;

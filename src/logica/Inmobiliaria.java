@@ -17,6 +17,7 @@ public class Inmobiliaria {
     private final ParqueaderoDAO parqueaderoDAO;
     private final EspacioComunDAO espacioDAO;
     private final ReservaDAO reservaDAO;
+    private final PagoEspacioDAO pagoespacioDAO;
 
     public Inmobiliaria() {
         conjuntoDAO = new ConjuntoDAO();
@@ -25,6 +26,7 @@ public class Inmobiliaria {
         parqueaderoDAO = new ParqueaderoDAO();
         espacioDAO = new EspacioComunDAO();
         reservaDAO = new ReservaDAO();
+        pagoespacioDAO = new PagoEspacioDAO();
     }
 
     /*
@@ -161,6 +163,28 @@ public class Inmobiliaria {
 
     public int busquedaId(Long k_identificacion, int k_codigo) throws CaException {
         return reservaDAO.buscarIdPersona(k_identificacion, k_codigo);
+    }
+
+    /*
+       Pago Espacio
+     */
+    public void incluirPagoEspacio(PagoEspacio pagoec) throws CaException {
+        pagoespacioDAO.setPagoEspacio(pagoec);
+        pagoespacioDAO.incluirPagoEspacio();
+    }
+
+    public PagoEspacio buscarPagoEspacio(PagoEspacio pagoec) throws CaException {
+        pagoespacioDAO.setPagoEspacio(pagoec);
+        pagoespacioDAO.buscarPagoEspacio();
+        return pagoespacioDAO.getPagoEspacio();
+    }
+
+    public PagoEspacioDAO getPagoEspacioDAO() {
+        return pagoespacioDAO;
+    }
+
+    public int busquedaReserva(Integer k_idreserva, int k_codigo) throws CaException {
+        return pagoespacioDAO.buscarNumReserva(k_idreserva, k_codigo);
     }
 
 }

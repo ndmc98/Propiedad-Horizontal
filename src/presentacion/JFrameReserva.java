@@ -201,7 +201,12 @@ public class JFrameReserva extends javax.swing.JFrame {
     }//GEN-LAST:event_listaEspComunActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        reserva = new Reserva((int) spnIdReserva.getValue(), (Date) dateFin.getDate(), (Date) dateInicio.getDate(), (Long) spnIdentif.getValue(), (int) listaEspComun.getSelectedItem());
+        try {
+            reserva = new Reserva((int) spnIdReserva.getValue(), (Date) dateFin.getDate(), (Date) dateInicio.getDate(), (Long) spnIdentif.getValue(), (int) listaEspComun.getSelectedItem());
+            inmobiliaria.incluirReserva(reserva);
+        } catch (CaException ex) {
+            Logger.getLogger(JFrameReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnReservarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
