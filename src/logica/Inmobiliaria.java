@@ -165,6 +165,12 @@ public class Inmobiliaria {
         return reservaDAO.buscarIdPersona(k_identificacion, k_codigo);
     }
 
+    public void eliminarReserva(Reserva reserva) throws CaException {
+        reservaDAO.setReserva(reserva);
+        reservaDAO.eliminaReserva();
+    }
+
+
     /*
        Pago Espacio
      */
@@ -187,4 +193,8 @@ public class Inmobiliaria {
         return pagoespacioDAO.buscarNumReserva(k_idreserva, k_codigo);
     }
 
+    public void eliminarPagoEspacio(PagoEspacio pagoec) throws CaException {
+        pagoespacioDAO.setPagoEspacio(pagoec);
+        pagoespacioDAO.eliminarPagoEspacio();
+    }
 }

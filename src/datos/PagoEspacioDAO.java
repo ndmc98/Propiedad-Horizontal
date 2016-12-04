@@ -123,7 +123,19 @@ public class PagoEspacioDAO {
      * @throws CaException
      */
     public void eliminarPagoEspacio() throws CaException {
-
+        try {
+            String strSQL = "DELETE FROM PagoEspacio WHERE k_idpagoespacio = ?";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            try (PreparedStatement prepStmt = conexion.prepareStatement(strSQL)) {
+                prepStmt.setInt(1, pagoespacio.getK_idreserva());
+                prepStmt.executeUpdate();
+            }
+            ServiceLocator.getInstance().commit();
+        } catch (SQLException e) {
+            throw new CaException("Apartamento", "No pudo encontrar el Apartamento " + e.getMessage());
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
     }
 
     /*

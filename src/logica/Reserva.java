@@ -28,6 +28,10 @@ public class Reserva {
         this.k_idespaciocomun = k_idespaciocomun;
     }
 
+    public Reserva(int k_idreserva) {
+        this.k_idreserva = k_idreserva;
+    }
+    
     /*
         Metodos Get/Set
      */

@@ -116,10 +116,13 @@
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="pagoReservaD">
+        <Component class="javax.swing.JButton" name="pagoEspacioD">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pago Reserva"/>
+            <Property name="text" type="java.lang.String" value="Pago Espacio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pagoEspacioDActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="personaD">
           <Properties>
@@ -145,6 +148,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Reserva"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reservaDActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

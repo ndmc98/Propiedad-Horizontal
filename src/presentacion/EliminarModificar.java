@@ -46,7 +46,7 @@ public class EliminarModificar extends javax.swing.JFrame {
         conjuntoM = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         eliminar = new javax.swing.JLabel();
-        pagoReservaD = new javax.swing.JButton();
+        pagoEspacioD = new javax.swing.JButton();
         personaD = new javax.swing.JButton();
         telefonoD = new javax.swing.JButton();
         pagoCuaotaD = new javax.swing.JButton();
@@ -105,8 +105,13 @@ public class EliminarModificar extends javax.swing.JFrame {
         eliminar.setText("Eliminar");
         jPanel2.add(eliminar);
 
-        pagoReservaD.setText("Pago Reserva");
-        jPanel2.add(pagoReservaD);
+        pagoEspacioD.setText("Pago Espacio");
+        pagoEspacioD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagoEspacioDActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pagoEspacioD);
 
         personaD.setText("Persona");
         jPanel2.add(personaD);
@@ -121,6 +126,11 @@ public class EliminarModificar extends javax.swing.JFrame {
         jPanel2.add(cuotaD);
 
         reservaD.setText("Reserva");
+        reservaD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservaDActionPerformed(evt);
+            }
+        });
         jPanel2.add(reservaD);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 340));
@@ -151,6 +161,14 @@ public class EliminarModificar extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
+    private void pagoEspacioDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoEspacioDActionPerformed
+        new JFramePagoEspacio(conjunto, "Eliminar").setVisible(true);
+    }//GEN-LAST:event_pagoEspacioDActionPerformed
+
+    private void reservaDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaDActionPerformed
+        new JFrameReservaDelete(conjunto).setVisible(true);
+    }//GEN-LAST:event_reservaDActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton apartamentoM;
@@ -169,7 +187,7 @@ public class EliminarModificar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel modificar;
     private javax.swing.JButton pagoCuaotaD;
-    private javax.swing.JButton pagoReservaD;
+    private javax.swing.JButton pagoEspacioD;
     private javax.swing.JButton personaD;
     private javax.swing.JButton reservaD;
     private javax.swing.JButton salir;

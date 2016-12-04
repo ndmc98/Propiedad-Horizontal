@@ -158,7 +158,7 @@ public class Creacion extends javax.swing.JFrame {
     }//GEN-LAST:event_reservaActionPerformed
 
     private void pagoEspacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagoEspacioActionPerformed
-        new JFramePagoEspacio(conjunto).setVisible(true);
+        new JFramePagoEspacio(conjunto, "Registrar").setVisible(true);
     }//GEN-LAST:event_pagoEspacioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

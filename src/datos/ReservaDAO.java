@@ -49,8 +49,21 @@ public class ReservaDAO {
         }
     }
 
-    public void eliminaReserva() {
-
+    public void eliminaReserva() throws CaException {
+        try {
+            String strSQL = "DELETE FROM Reserva r, PagoEspacio pe WHERE r.k_idreserva = pe.k_idreserva AND r.k_idreserva = ?";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            try (PreparedStatement prepStmt = conexion.prepareStatement(strSQL)) {
+                prepStmt.setInt(1, reserva.getK_idreserva());
+                prepStmt.executeUpdate();
+            }
+            ServiceLocator.getInstance().commit();
+        } catch (SQLException e) {
+            throw new CaException("Apartamento", "No pudo encontrar el Apartamento " + e.getMessage());
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+        
     }
 
     /**

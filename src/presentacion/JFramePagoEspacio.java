@@ -19,13 +19,30 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
     Inmobiliaria inmobiliaria = new Inmobiliaria();
     PagoEspacio pagoEspacio;
     int encontrada;
+    String opcion;
 
     /**
      * Creates new form JFramePagoEspacio
      */
-    public JFramePagoEspacio(Conjunto conjunto) {
+    public JFramePagoEspacio(Conjunto conjunto, String opcion) {
         initComponents();
         this.conjunto = conjunto;
+        this.opcion = opcion;
+        if (opcion.equals("Eliminar")) {
+            btnEliminar.setVisible(true);
+            btnRegistrarPago.setVisible(false);
+            lblFormaPago.setVisible(false);
+            lblNumReserva.setVisible(false);
+            lblvalorPago.setVisible(false);
+            jLabel1.setVisible(false);
+            spnNumReserva.setVisible(false);
+            spnValorPago.setVisible(false);
+            datePago.setVisible(false);
+            boxFormaPago.setVisible(false);
+        } else if (opcion.equals("Registrar")) {
+            btnRegistrarPago.setVisible(true);
+            btnEliminar.setVisible(false);
+        }
     }
 
     public void buscarReserva() throws CaException {
@@ -52,6 +69,7 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
         spnValorPago = new javax.swing.JSpinner();
         spnNumReserva = new javax.swing.JSpinner();
         btnRegistrarPago = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,6 +110,14 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,9 +138,20 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        try {
+            pagoEspacio = new PagoEspacio((int) spnNumPago.getValue());
+            inmobiliaria.eliminarPagoEspacio(pagoEspacio);
+        } catch (CaException ex) {
+            Logger.getLogger(JFramePagoEspacio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxFormaPago;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRegistrarPago;
     private com.toedter.calendar.JDateChooser datePago;
     private javax.swing.JLabel jLabel1;

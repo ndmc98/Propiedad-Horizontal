@@ -26,6 +26,10 @@ public class PagoEspacio {
         this.n_formapago = n_formapago;
         this.k_idreserva = k_idreserva;
     }
+    
+    public PagoEspacio(int k_idpagoespacio){
+        this.k_idpagoespacio = k_idpagoespacio;
+    }
 
     /*
         Metodos Get and Set
