@@ -5,9 +5,12 @@
  */
 package presentacion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Conjunto;
 import logica.Inmobiliaria;
 import logica.Reserva;
+import util.CaException;
 
 /**
  *
@@ -26,8 +29,6 @@ public class JFrameReservaDelete extends javax.swing.JFrame {
         initComponents();
         this.conjunto = conjunto;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +65,11 @@ public class JFrameReservaDelete extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         reserva = new Reserva((int) spnNumReserva.getValue());
-        inmobiliaria.eliminarReserva(reserva);
+        try {
+            inmobiliaria.eliminarReserva(reserva);
+        } catch (CaException ex) {
+            Logger.getLogger(JFrameReservaDelete.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
