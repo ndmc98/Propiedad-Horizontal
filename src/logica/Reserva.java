@@ -32,6 +32,12 @@ public class Reserva {
         this.k_idreserva = k_idreserva;
     }
     
+    public Reserva(Date f_fin, Date f_inicio, Integer k_idespaciocomun) {
+        this.f_fin = f_fin;
+        this.f_inicio = f_inicio;
+        this.k_idespaciocomun = k_idespaciocomun;
+    }
+    
     /*
         Metodos Get/Set
      */

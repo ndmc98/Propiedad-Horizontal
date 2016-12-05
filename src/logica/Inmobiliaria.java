@@ -159,7 +159,12 @@ public class Inmobiliaria {
         reservaDAO.incluirReserva();
     }
 
-    public Reserva buscarReserva(Reserva reserva) throws CaException {
+    public DefaultTableModel buscarReserva(Reserva reserva) throws CaException {
+        reservaDAO.setReserva(reserva);
+        return reservaDAO.buscarReserva();
+    }
+    
+    public Reserva buscarReserva1(Reserva reserva) throws CaException {
         reservaDAO.setReserva(reserva);
         reservaDAO.buscarReserva();
         return reservaDAO.getReserva();

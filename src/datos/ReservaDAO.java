@@ -4,7 +4,9 @@ import logica.Reserva;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 import util.CaException;
 import util.ServiceLocator;
 
@@ -69,24 +71,34 @@ public class ReservaDAO {
     /**
      * Busqueda en la tabla Reserva.
      *
+     * @return 
      * @throws CaException
      */
-    public void buscarReserva() throws CaException {
+    public DefaultTableModel buscarReserva() throws CaException {
         try {
-            String strSQL = "SELECT k_idreserva, f_fin, f_inicio, k_identificacion, k_idespaciocomun FROM Reserva WHERE k_idreserva = ?";
+            DefaultTableModel modelo = new DefaultTableModel();
+            String strSQL = "SELECT k_idreserva AS \"Numero de Reserva\", f_inicio AS \"Fecha Inicio\", f_fin AS \"Fecha Fin\", k_identificacion AS \"Solicitante\" FROM Reserva r, EspacioComun ec, Conjunto c WHERE r.k_idespaciocomun = ep.k_idespaciocomun AND c.k_codigo = ec.k_codigo AND r.k_idespaciocomun = ? AND r.f_inicio between ? AND ?";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setInt(1, reserva.getK_idreserva());
+            prepStmt.setInt(1, reserva.getK_idespaciocomun());
+            prepStmt.setDate(2, reserva.getF_inicio());
+            prepStmt.setDate(3, reserva.getF_fin());
             ResultSet rs = prepStmt.executeQuery();
-            while (rs.next()) {
-                reserva.setK_idreserva(rs.getInt(1));
-                reserva.setF_fin(rs.getDate(2));
-                reserva.setF_inicio(rs.getDate(3));
-                reserva.setK_identificacion(rs.getLong(4));
-                reserva.setK_idespaciocomun(rs.getInt(5));
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            for (int i = 1; i <= cantidadColumnas; i++) {
+                modelo.addColumn(rsMd.getColumnLabel(i));
             }
+            while (rs.next()) {
+                Object[] fila = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(fila);
+            }
+            return modelo;
         } catch (SQLException e) {
-            throw new CaException("ReservaDAO", "No pudo recuperar Reserva " + e.getMessage());
+            throw new CaException("EspacioComunDAO", "No pudo recuperar el Espacio Comun " + e.getMessage());
         } finally {
             ServiceLocator.getInstance().liberarConexion();
         }

@@ -140,7 +140,7 @@ public class Opciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUplDelActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
+        new Consultas(conjunto).setVisible(true);        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
 
