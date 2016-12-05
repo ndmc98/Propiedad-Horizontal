@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import logica.Conjunto;
 
 /**
  *
- * @author Hogar
+ * @author
  */
 public class Creacion extends javax.swing.JFrame {
 
     Conjunto conjunto;
-    
+
     /**
      * Creates new form Creacion
+     *
+     * @param conjunto
      */
     public Creacion(Conjunto conjunto) {
         initComponents();
@@ -44,13 +41,12 @@ public class Creacion extends javax.swing.JFrame {
         cuota = new javax.swing.JButton();
         pagoCuota = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bloque.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        bloque.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         apto.setText("Apartamento");
         apto.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +54,6 @@ public class Creacion extends javax.swing.JFrame {
                 aptoActionPerformed(evt);
             }
         });
-        bloque.add(apto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         parqueadero.setText("Parqueadero");
         parqueadero.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +61,6 @@ public class Creacion extends javax.swing.JFrame {
                 parqueaderoActionPerformed(evt);
             }
         });
-        bloque.add(parqueadero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         espacioComun.setText("Espacio Comun");
         espacioComun.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +68,6 @@ public class Creacion extends javax.swing.JFrame {
                 espacioComunActionPerformed(evt);
             }
         });
-        bloque.add(espacioComun, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         Bloque.setText("Bloque");
         Bloque.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +75,6 @@ public class Creacion extends javax.swing.JFrame {
                 BloqueActionPerformed(evt);
             }
         });
-        bloque.add(Bloque, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         reserva.setText("Reserva");
         reserva.setToolTipText("");
@@ -91,7 +83,6 @@ public class Creacion extends javax.swing.JFrame {
                 reservaActionPerformed(evt);
             }
         });
-        bloque.add(reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         pagoEspacio.setText("Pago Espacio");
         pagoEspacio.addActionListener(new java.awt.event.ActionListener() {
@@ -99,45 +90,124 @@ public class Creacion extends javax.swing.JFrame {
                 pagoEspacioActionPerformed(evt);
             }
         });
-        bloque.add(pagoEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         persona.setText("Persona");
-        bloque.add(persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jButton2.setText("Telefono");
-        bloque.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         cuota.setText("Cuota");
-        bloque.add(cuota, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         pagoCuota.setText("Pago Cuota");
-        bloque.add(pagoCuota, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
-        getContentPane().add(bloque, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 140, 330));
+        javax.swing.GroupLayout bloqueLayout = new javax.swing.GroupLayout(bloque);
+        bloque.setLayout(bloqueLayout);
+        bloqueLayout.setHorizontalGroup(
+            bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bloqueLayout.createSequentialGroup()
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bloqueLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(apto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(parqueadero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pagoEspacio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(bloqueLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cuota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(espacioComun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 33, Short.MAX_VALUE)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reserva, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bloqueLayout.createSequentialGroup()
+                            .addComponent(Bloque, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(25, 25, 25))
+                        .addGroup(bloqueLayout.createSequentialGroup()
+                            .addComponent(persona, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pagoCuota)))
+        );
+        bloqueLayout.setVerticalGroup(
+            bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bloqueLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(apto)
+                    .addComponent(Bloque))
+                .addGap(22, 22, 22)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(parqueadero)
+                    .addComponent(persona))
+                .addGap(18, 18, 18)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pagoEspacio)
+                    .addComponent(reserva))
+                .addGap(18, 18, 18)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(espacioComun)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addGroup(bloqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuota)
+                    .addComponent(pagoCuota))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        salir.setText("Salir");
+        jLabel1.setFont(new java.awt.Font("Tekton Pro Cond", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Creacion");
+
+        salir.setText("Volver");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        jPanel1.add(salir);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 110, 330));
-
-        jLabel1.setFont(new java.awt.Font("Tekton Pro Cond", 0, 24)); // NOI18N
-        jLabel1.setText("Creacion");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(bloque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(salir))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bloque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(salir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void parqueaderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parqueaderoActionPerformed
-       new JFrameParqueadero(conjunto).setVisible(true);
+        new JFrameParqueadero(conjunto).setVisible(true);
     }//GEN-LAST:event_parqueaderoActionPerformed
 
     private void espacioComunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espacioComunActionPerformed
-       new JFrameEspacioComun(conjunto).setVisible(true);
+        new JFrameEspacioComun(conjunto).setVisible(true);
     }//GEN-LAST:event_espacioComunActionPerformed
 
     private void aptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aptoActionPerformed

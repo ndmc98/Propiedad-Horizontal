@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import logica.Conjunto;
 
 /**
  *
- * @author SEBASTIAN
+ * @author
  */
 public class Opciones extends javax.swing.JFrame {
 
     Conjunto conjunto;
-    
+
     /**
      * Creates new form Opciones
+     *
+     * @param conjunto
      */
     public Opciones(Conjunto conjunto) {
         initComponents();
@@ -40,9 +37,6 @@ public class Opciones extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCreate.setText("Registrar");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +44,6 @@ public class Opciones extends javax.swing.JFrame {
                 btnCreateActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         btnUplDel.setText("Modificar o Eliminar");
         btnUplDel.addActionListener(new java.awt.event.ActionListener() {
@@ -58,10 +51,13 @@ public class Opciones extends javax.swing.JFrame {
                 btnUplDelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUplDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
         btnConsultar.setText("Consultar");
-        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -69,13 +65,64 @@ public class Opciones extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 380, 190));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(btnConsultar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(btnCreate))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btnUplDel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(salir)))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCreate)
+                .addGap(18, 18, 18)
+                .addComponent(btnUplDel)
+                .addGap(18, 18, 18)
+                .addComponent(btnConsultar)
+                .addGap(18, 18, 18)
+                .addComponent(salir)
+                .addContainerGap())
+        );
 
         jLabel1.setFont(new java.awt.Font("Trajan Pro", 0, 36)); // NOI18N
         jLabel1.setText("Menu de opciones");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,13 +132,16 @@ public class Opciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
-        System.exit(this.EXIT_ON_CLOSE);
+        System.exit(Opciones.EXIT_ON_CLOSE);
     }//GEN-LAST:event_salirActionPerformed
 
     private void btnUplDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUplDelActionPerformed
         new EliminarModificar(conjunto).setVisible(true);
     }//GEN-LAST:event_btnUplDelActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

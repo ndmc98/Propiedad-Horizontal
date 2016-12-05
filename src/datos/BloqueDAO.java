@@ -27,14 +27,16 @@ public class BloqueDAO {
     /**
      * Verifica si esta vacia la tabla.
      *
+     * @param k_codigo
      * @return int
      * @throws CaException
      */
-    public int isVacio() throws CaException {
+    public int isVacio(Integer k_codigo) throws CaException {
         try {
-            String strSQL = "SELECT * FROM Bloquee";
+            String strSQL = "SELECT * FROM Bloquee WHERE k_codigo = ? ";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setInt(1, k_codigo);
             ResultSet rs = prepStmt.executeQuery();
             if (rs.next()) {
                 return 1;

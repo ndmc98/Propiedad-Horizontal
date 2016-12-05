@@ -47,8 +47,8 @@ public class Inmobiliaria {
         return bloqueDAO;
     }
 
-    public boolean sinBloques() throws CaException {
-        return bloqueDAO.isVacio() == 0;
+    public boolean sinBloques(Integer k_codigo) throws CaException {
+        return bloqueDAO.isVacio(k_codigo) == 0;
     }
 
     public JComboBox<String> listaBloques(int k_codigo) throws CaException {

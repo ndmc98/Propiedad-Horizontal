@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import logica.Conjunto;
 
 /**
  *
- * @author SEBASTIAN
+ * @author 
  */
 public class EliminarModificar extends javax.swing.JFrame {
 
@@ -17,6 +12,7 @@ public class EliminarModificar extends javax.swing.JFrame {
     
     /**
      * Creates new form Actualizar
+     * @param conjunto
      */
     public EliminarModificar(Conjunto conjunto) {
         initComponents();
@@ -58,24 +54,27 @@ public class EliminarModificar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         modificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         modificar.setText("Modificar");
-        jPanel1.add(modificar);
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         jButton5.setText("Pago Reserva");
-        jPanel1.add(jButton5);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 110, -1));
 
         jButton6.setText("Persona");
-        jPanel1.add(jButton6);
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, -1));
 
         jButton9.setText("Telefono");
-        jPanel1.add(jButton9);
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 110, -1));
 
         jButton8.setText("Pago Cuota");
-        jPanel1.add(jButton8);
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 120, -1));
 
         jButton7.setText("Cuota");
-        jPanel1.add(jButton7);
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 110, -1));
 
         valoresGloabalesM.setText("Valores Globales");
         valoresGloabalesM.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +82,7 @@ public class EliminarModificar extends javax.swing.JFrame {
                 valoresGloabalesMActionPerformed(evt);
             }
         });
-        jPanel1.add(valoresGloabalesM);
+        jPanel1.add(valoresGloabalesM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
 
         apartamentoM.setText("Apartamento");
         apartamentoM.addActionListener(new java.awt.event.ActionListener() {
@@ -91,19 +90,22 @@ public class EliminarModificar extends javax.swing.JFrame {
                 apartamentoMActionPerformed(evt);
             }
         });
-        jPanel1.add(apartamentoM);
+        jPanel1.add(apartamentoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, -1));
 
         espacioComunM.setText("Espacio Comun");
-        jPanel1.add(espacioComunM);
+        jPanel1.add(espacioComunM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 120, -1));
 
         conjuntoM.setText("Conjunto");
-        jPanel1.add(conjuntoM);
+        jPanel1.add(conjuntoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 160, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 350, 280));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         eliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         eliminar.setText("Eliminar");
-        jPanel2.add(eliminar);
+        jPanel2.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 10, 70, -1));
 
         pagoEspacioD.setText("Pago Espacio");
         pagoEspacioD.addActionListener(new java.awt.event.ActionListener() {
@@ -111,19 +113,19 @@ public class EliminarModificar extends javax.swing.JFrame {
                 pagoEspacioDActionPerformed(evt);
             }
         });
-        jPanel2.add(pagoEspacioD);
+        jPanel2.add(pagoEspacioD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         personaD.setText("Persona");
-        jPanel2.add(personaD);
+        jPanel2.add(personaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 90, -1));
 
         telefonoD.setText("Telefono");
-        jPanel2.add(telefonoD);
+        jPanel2.add(telefonoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 95, -1));
 
         pagoCuaotaD.setText("Pago Cuota");
-        jPanel2.add(pagoCuaotaD);
+        jPanel2.add(pagoCuaotaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         cuotaD.setText("Cuota");
-        jPanel2.add(cuotaD);
+        jPanel2.add(cuotaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 95, -1));
 
         reservaD.setText("Reserva");
         reservaD.addActionListener(new java.awt.event.ActionListener() {
@@ -131,19 +133,18 @@ public class EliminarModificar extends javax.swing.JFrame {
                 reservaDActionPerformed(evt);
             }
         });
-        jPanel2.add(reservaD);
+        jPanel2.add(reservaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 89, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 340));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, 220));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 110, -1));
 
-        salir.setText("Salir");
+        salir.setText("Volver");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        jPanel3.add(salir);
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 110, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 70, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
