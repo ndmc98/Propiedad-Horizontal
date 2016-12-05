@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import logica.Conjunto;
 import logica.Inmobiliaria;
 import logica.Reserva;
@@ -18,18 +11,16 @@ import util.CaException;
 
 /**
  *
- * @author Hogar
+ * @author
  */
-public class JFrameReserva extends javax.swing.JFrame {
+public final class JFrameReserva extends javax.swing.JFrame {
 
     Conjunto conjunto;
     Inmobiliaria inmobiliaria = new Inmobiliaria();
     Reserva reserva;
     int encontrado;
+    int disponible;
 
-    /**
-     * Creates new form PrototipoGUI
-     */
     public JFrameReserva(Conjunto conjunto) {
         initComponents();
         this.conjunto = conjunto;
@@ -40,6 +31,10 @@ public class JFrameReserva extends javax.swing.JFrame {
 
     public void buscarIdentificacion() throws CaException {
         encontrado = inmobiliaria.busquedaId((Long) spnIdentif.getValue(), conjunto.getK_codigo());
+    }
+
+    public void verificarDisp() throws CaException {
+        disponible = inmobiliaria.verificarDisp(Integer.parseInt((String) listaEspComun.getSelectedItem()));
     }
 
     public void listaEspacios() {
@@ -53,6 +48,7 @@ public class JFrameReserva extends javax.swing.JFrame {
         }
     }
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public void llenadoTable() {
         try {
             this.jTable1.setModel(inmobiliaria.tableEspacios());
@@ -80,13 +76,6 @@ public class JFrameReserva extends javax.swing.JFrame {
         lblInfoSol = new javax.swing.JLabel();
         lblIdenti = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         btnReservar = new javax.swing.JButton();
         lblNumReserva = new javax.swing.JLabel();
         spnIdReserva = new javax.swing.JSpinner();
@@ -95,6 +84,7 @@ public class JFrameReserva extends javax.swing.JFrame {
         dateFin = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -111,32 +101,24 @@ public class JFrameReserva extends javax.swing.JFrame {
         setTitle("Reservas Comunales");
         setBackground(new java.awt.Color(166, 225, 247));
         setForeground(new java.awt.Color(102, 153, 255));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblECsolicitado.setText("Espacio comunal solicitado:");
-        getContentPane().add(lblECsolicitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 195, 25));
 
         listaEspComun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaEspComunActionPerformed(evt);
             }
         });
-        getContentPane().add(listaEspComun, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 116, -1));
 
         lblFinicio.setText("Fecha inicio:");
-        getContentPane().add(lblFinicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, -1));
 
         lblFin.setText("Fecha fin:");
-        getContentPane().add(lblFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 100, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 14, 333));
 
         lblInfoSol.setText("Información del solicitante:");
-        getContentPane().add(lblInfoSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         lblIdenti.setText("Identificación:");
-        getContentPane().add(lblIdenti, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,30 +126,6 @@ public class JFrameReserva extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, -1, -1));
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setText("Nombre Completo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, -1, -1));
-
-        jLabel8.setText("Identificación:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 71, -1, -1));
-
-        jTextField2.setEnabled(false);
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 27, 180, -1));
-
-        jTextField3.setEnabled(false);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 68, 180, -1));
-
-        jLabel10.setText("Correo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-        jTextField5.setEnabled(false);
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 170, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 360, 180));
 
         btnReservar.setText("Reservar\n");
         btnReservar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,22 +133,109 @@ public class JFrameReserva extends javax.swing.JFrame {
                 btnReservarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 95, 45));
 
         lblNumReserva.setText("Numero unico de identificacion de reserva:");
-        getContentPane().add(lblNumReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, -1));
 
         spnIdReserva.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9999, 1));
-        getContentPane().add(spnIdReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 80, -1));
 
         spnIdentif.setModel(new javax.swing.SpinnerNumberModel(Long.valueOf(1L), Long.valueOf(1L), Long.valueOf(9999999999L), Long.valueOf(1L)));
-        getContentPane().add(spnIdentif, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 100, -1));
-        getContentPane().add(dateInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 150, -1));
-        getContentPane().add(dateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 150, -1));
 
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 850, 190));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Reservas");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNumReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(spnIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblECsolicitado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(listaEspComun, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFinicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(29, 29, 29)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblInfoSol)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblIdenti)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(spnIdentif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(btnBuscar)))))
+                .addGap(0, 26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(257, 257, 257))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNumReserva)
+                                    .addComponent(spnIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblECsolicitado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listaEspComun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFinicio)
+                                    .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFin)
+                                    .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54)
+                                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(lblInfoSol)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIdenti)
+                            .addComponent(spnIdentif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addComponent(btnBuscar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,10 +247,19 @@ public class JFrameReserva extends javax.swing.JFrame {
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
         try {
-            reserva = new Reserva((int) spnIdReserva.getValue(), (Date) dateFin.getDate(), (Date) dateInicio.getDate(), (Long) spnIdentif.getValue(), (int) listaEspComun.getSelectedItem());
-            inmobiliaria.incluirReserva(reserva);
+            if (disponible == 0) {
+                reserva = new Reserva((int) spnIdReserva.getValue(), (Date) dateFin.getDate(), (Date) dateInicio.getDate(), (Long) spnIdentif.getValue(), Integer.parseInt((String) listaEspComun.getSelectedItem()));
+                inmobiliaria.incluirReserva(reserva);
+
+                inmobiliaria.updateEspacioComun(Integer.parseInt((String) spnIdReserva.getValue()));
+
+            } else if (disponible == 1) {
+                JOptionPane.showMessageDialog(this, "Espacio no se encuentra disponible", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         } catch (CaException ex) {
             Logger.getLogger(JFrameReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Espacio no se encuentra disponible", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnReservarActionPerformed
 
@@ -229,16 +283,10 @@ public class JFrameReserva extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateFin;
     private com.toedter.calendar.JDateChooser dateInicio;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblECsolicitado;
     private javax.swing.JLabel lblFin;
     private javax.swing.JLabel lblFinicio;

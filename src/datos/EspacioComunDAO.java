@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import util.CaException;
@@ -146,6 +148,46 @@ public class EspacioComunDAO {
      */
     public void actualizarEspacioComun() throws CaException {
 
+    }
+    
+    public void updateEspacioComun(int k_idreserva) throws CaException {
+        try {
+            String strSQL = "UPDATE EspacioComun SET i_estadoEspacio = ? FROM Reserva r, EspacioComun ec WHERE r.k_idespaciocomun = ec.k_idespaciocomun AND r.k_idreserva = ?";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            try (PreparedStatement prepStmt = conexion.prepareStatement(strSQL)) {
+                prepStmt.setString(1, "F");
+                prepStmt.setInt(2, k_idreserva);
+                prepStmt.executeUpdate();
+            }
+            ServiceLocator.getInstance().commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(ApartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+    }
+    
+    public int verificarEstado(Integer k_idespaciocomun) throws CaException {
+        try {
+            int encontrado = 0;
+            String strSQL = "SELECT ep.k_idespaciocomun FROM EspacioComun ep, Conjunto c WHERE ep.k_codigo = c.k_codigo AND ep.i_estadoEspacio = 'F'";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                if (k_idespaciocomun.equals(rs.getInt(1))) {
+                    encontrado = 1;
+                    break;
+                } else {
+                    encontrado = 0;
+                }
+            }
+            return encontrado;
+        } catch (SQLException e) {
+            throw new CaException("Apartamento", "No pudo encontrar el Apartamento " + e.getMessage());
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
     }
 
     /*

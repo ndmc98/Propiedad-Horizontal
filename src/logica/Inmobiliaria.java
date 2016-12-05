@@ -142,6 +142,14 @@ public class Inmobiliaria {
     public DefaultTableModel tableEspacios() throws CaException {
         return espacioDAO.buscarTableEC();
     }
+    
+    public void updateEspacioComun(int k_idreserva) throws CaException{
+        espacioDAO.updateEspacioComun(k_idreserva);
+    }
+    
+    public int verificarDisp(Integer k_idespaciocomun) throws CaException {
+        return espacioDAO.verificarEstado(k_idespaciocomun);
+    } 
 
     /*
        Reserva
@@ -197,4 +205,6 @@ public class Inmobiliaria {
         pagoespacioDAO.setPagoEspacio(pagoec);
         pagoespacioDAO.eliminarPagoEspacio();
     }
+    
+    
 }

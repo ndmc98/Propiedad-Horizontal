@@ -23,6 +23,8 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
 
     /**
      * Creates new form JFramePagoEspacio
+     * @param conjunto
+     * @param opcion
      */
     public JFramePagoEspacio(Conjunto conjunto, String opcion) {
         initComponents();
@@ -70,37 +72,27 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
         spnNumReserva = new javax.swing.JSpinner();
         btnRegistrarPago = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNumPago.setText("Número unico de Pago:");
-        getContentPane().add(lblNumPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 28, 200, -1));
 
         spnNumPago.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9999, 1));
-        getContentPane().add(spnNumPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 90, -1));
 
         jLabel1.setText("Fecha Pago:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, -1));
 
         lblvalorPago.setText("Valor Pago:");
-        getContentPane().add(lblvalorPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
 
         lblFormaPago.setText("Forma Pago:");
-        getContentPane().add(lblFormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 80, -1));
 
         boxFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cheque", "Efectivo", " " }));
-        getContentPane().add(boxFormaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 100, -1));
 
         lblNumReserva.setText("Número de la reserva:");
-        getContentPane().add(lblNumReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, -1));
-        getContentPane().add(datePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 150, -1));
 
         spnValorPago.setModel(new javax.swing.SpinnerNumberModel(Long.valueOf(1L), Long.valueOf(1L), Long.valueOf(9999999L), Long.valueOf(1L)));
-        getContentPane().add(spnValorPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 130, -1));
 
         spnNumReserva.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9999, 1));
-        getContentPane().add(spnNumReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 100, -1));
 
         btnRegistrarPago.setText("Registrar");
         btnRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +100,6 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
                 btnRegistrarPagoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +107,83 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Pago Espacio");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrarPago)
+                .addGap(66, 66, 66))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblvalorPago, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(spnValorPago, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70)
+                                .addComponent(boxFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNumReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(spnNumReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNumPago, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(spnNumPago, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(datePago, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNumPago)
+                    .addComponent(spnNumPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(datePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblvalorPago)
+                    .addComponent(spnValorPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFormaPago)
+                    .addComponent(boxFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumReserva)
+                    .addComponent(spnNumReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnRegistrarPago))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,6 +222,7 @@ public class JFramePagoEspacio extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarPago;
     private com.toedter.calendar.JDateChooser datePago;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblFormaPago;
     private javax.swing.JLabel lblNumPago;
     private javax.swing.JLabel lblNumReserva;

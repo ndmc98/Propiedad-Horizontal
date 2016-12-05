@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import java.util.logging.Level;
@@ -15,7 +10,7 @@ import util.CaException;
 
 /**
  *
- * @author Hogar
+ * @author 
  */
 public class JFrameEspacioComun extends javax.swing.JFrame {
 
@@ -25,6 +20,7 @@ public class JFrameEspacioComun extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameEspacioComun
+     * @param conjunto
      */
     public JFrameEspacioComun(Conjunto conjunto) {
         initComponents();
@@ -51,22 +47,18 @@ public class JFrameEspacioComun extends javax.swing.JFrame {
         listaEC = new javax.swing.JComboBox<>();
         spnValor = new javax.swing.JSpinner();
         boxEstado = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNumEC.setText("Número unico de Espacio:");
-        getContentPane().add(lblNumEC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 210, -1));
 
         lblTipoEC.setText("Tipo de Espacio Comun:");
-        getContentPane().add(lblTipoEC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, -1));
 
         lblValorAlqu.setText("Valor del Alquiler:");
-        getContentPane().add(lblValorAlqu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 140, -1));
 
         lblEstado.setText("Estado:");
         lblEstado.setToolTipText("");
-        getContentPane().add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 150, 20));
 
         btnCrear.setText("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -74,19 +66,70 @@ public class JFrameEspacioComun extends javax.swing.JFrame {
                 btnCrearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 80, -1));
 
         spnNumEC.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9999, 1));
-        getContentPane().add(spnNumEC, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 70, -1));
 
         listaEC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Salon", "Parqueadero Visitante", "BBQ" }));
-        getContentPane().add(listaEC, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 170, -1));
 
         spnValor.setModel(new javax.swing.SpinnerNumberModel(Long.valueOf(1L), Long.valueOf(1L), Long.valueOf(9999999999L), Long.valueOf(1L)));
-        getContentPane().add(spnValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 170, -1));
 
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupado" }));
-        getContentPane().add(boxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, 20));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Espacio Comun");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNumEC, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblValorAlqu, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTipoEC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnNumEC, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listaEC, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNumEC)
+                    .addComponent(spnNumEC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoEC)
+                    .addComponent(listaEC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorAlqu)
+                    .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btnCrear)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -116,6 +159,7 @@ public class JFrameEspacioComun extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxEstado;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblNumEC;
     private javax.swing.JLabel lblTipoEC;
