@@ -1,32 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 
 import datos.*;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 import util.CaException;
 
 /**
  *
- * @author SEBASTIAN
+ * @author
  */
 public class Inmobiliaria {
-    
-    private ConjuntoDAO conjuntoDAO;
-    private BloqueDAO bloqueDAO;
-    private ApartamentoDAO apartamentoDAO;
-    
-    public Inmobiliaria (){
+
+    private final ConjuntoDAO conjuntoDAO;
+    private final BloqueDAO bloqueDAO;
+    private final ApartamentoDAO apartamentoDAO;
+    private final ParqueaderoDAO parqueaderoDAO;
+    private final EspacioComunDAO espacioDAO;
+    private final ReservaDAO reservaDAO;
+    private final PagoDAO pagoDAO;
+
+    public Inmobiliaria() {
         conjuntoDAO = new ConjuntoDAO();
         bloqueDAO = new BloqueDAO();
         apartamentoDAO = new ApartamentoDAO();
+        parqueaderoDAO = new ParqueaderoDAO();
+        espacioDAO = new EspacioComunDAO();
+        reservaDAO = new ReservaDAO();
+        pagoDAO = new PagoDAO();
     }
-    
-    // Bloque
-    
+
+    /*
+        Bloque
+     */
     public void incluirBloque(Bloque bloque) throws CaException {
         bloqueDAO.setBloque(bloque);
         bloqueDAO.incluirBloque();
@@ -37,26 +42,22 @@ public class Inmobiliaria {
         bloqueDAO.buscarBloque();
         return bloqueDAO.getBloque();
     }
-    
-    
+
     public BloqueDAO getBloqueDAO() {
         return bloqueDAO;
     }
-    
-    public boolean sinBloques() throws CaException{
-        if(bloqueDAO.isVacio()==0){
-            return true;
-        }else{
-            return false;
-        }
+
+    public boolean sinBloques() throws CaException {
+        return bloqueDAO.isVacio() == 0;
     }
-    
-    public JComboBox<String> listaBloques(int k_codigo) throws CaException{
+
+    public JComboBox<String> listaBloques(int k_codigo) throws CaException {
         return bloqueDAO.listarBloques(k_codigo);
     }
-    
-    // Conjunto
-    
+
+    /*
+        Conjunto
+     */
     public void incluirConjunto(Conjunto conjunto) throws CaException {
         conjuntoDAO.setConjunto(conjunto);
         conjuntoDAO.incluirConjunto();
@@ -71,13 +72,14 @@ public class Inmobiliaria {
     public ConjuntoDAO getConjuntoDAO() {
         return conjuntoDAO;
     }
-    
-    public JComboBox<String> listaConjuntos() throws CaException{
+
+    public JComboBox<String> listaConjuntos() throws CaException {
         return conjuntoDAO.listarConjuntos();
     }
-    
-    // Apartamento
-    
+
+    /*
+       Apartamento
+     */
     public void incluirApartamento(Apartamento apartamento) throws CaException {
         apartamentoDAO.setApartamento(apartamento);
         apartamentoDAO.incluirApartamento();
@@ -92,5 +94,94 @@ public class Inmobiliaria {
     public ApartamentoDAO getApartamentoDAO() {
         return apartamentoDAO;
     }
+
+    /*
+       Parqueadero
+     */
+    public void incluirParqueadero(Parqueadero parqueadero) throws CaException {
+        parqueaderoDAO.setParqueadero(parqueadero);
+        parqueaderoDAO.incluirParqueadero();
+    }
+
+    public Parqueadero buscarParqueadero(Parqueadero parqueadero) throws CaException {
+        parqueaderoDAO.setParqueadero(parqueadero);
+        parqueaderoDAO.buscarParqueadero();
+        return parqueaderoDAO.getParqueadero();
+    }
+
+    public ParqueaderoDAO getParqueaderoDAO() {
+        return parqueaderoDAO;
+    }
+
+    public JComboBox<String> listaEspacios(int k_idbloquee, int k_codigo) throws CaException {
+        return apartamentoDAO.listarApartamento(k_idbloquee, k_codigo);
+    }
+
+    /*
+       Espacio Comun
+     */
+    public void incluirEspacioComun(EspacioComun espacio) throws CaException {
+        espacioDAO.setEspacioComun(espacio);
+        espacioDAO.incluirEspacioComun();
+    }
+
+    public EspacioComun buscarEspacioComun(EspacioComun espacio) throws CaException {
+        espacioDAO.setEspacioComun(espacio);
+        espacioDAO.buscarEspacioComun();
+        return espacioDAO.getEspacioComun();
+    }
+
+    public EspacioComunDAO getEspacioComunDAO() {
+        return espacioDAO;
+    }
+
+    public JComboBox<String> listaEspacios(int k_codigo) throws CaException {
+        return espacioDAO.listarEspacioComun(k_codigo);
+    }
+
+    public DefaultTableModel tableEspacios() throws CaException {
+        return espacioDAO.buscarTableEC();
+    }
+
+    /*
+       Reserva
+     */
+    public void incluirReserva(Reserva reserva) throws CaException {
+        reservaDAO.setReserva(reserva);
+        reservaDAO.incluirReserva();
+    }
+
+    public Reserva buscarReserva(Reserva reserva) throws CaException {
+        reservaDAO.setReserva(reserva);
+        reservaDAO.buscarReserva();
+        return reservaDAO.getReserva();
+    }
+
+    public ReservaDAO getReservaDAO() {
+        return reservaDAO;
+    }
+
+    public int busquedaId(Long k_identificacion, int k_codigo) throws CaException {
+        return reservaDAO.buscarIdPersona(k_identificacion, k_codigo);
+    }
     
+    
+    //pro
+    
+//    public int busquedaIdPago(Long k_idpago) throws CaException {
+//        return reservaDAO.buscarIdPago(k_idpago);
+//    }
+    
+    
+    
+    public DefaultTableModel tablePagos() throws CaException {
+        return pagoDAO.ConsultarTablaHistoricoPagos();
+    }
+    
+    public Pago buscarPago(Pago pago) throws CaException {
+        pagoDAO.setPago(pago);
+        pagoDAO.ConsultarTablaHistoricoPagos();
+        return pagoDAO.getPago();
+    }
+
 }
